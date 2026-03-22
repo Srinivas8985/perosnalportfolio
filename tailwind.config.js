@@ -15,3 +15,18 @@ export default {
   },
   plugins: [],
 }
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        marquee: { from: { transform: "translateX(0)" }, to: { transform: "translateX(-50%)" } },
+        scan:    { from: { top: "-1px" }, to: { top: "100%" } },
+      },
+      animation: {
+        "marquee": "marquee 22s linear infinite",
+        "scan":    "scan 12s linear infinite",
+      },
+    },
+  },
+}

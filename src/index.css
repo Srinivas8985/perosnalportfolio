@@ -1,271 +1,389 @@
 @import "tailwindcss";
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ========================================
    DESIGN TOKENS
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-:root {
-  --primary: #38bdf8;
-  /* sky-blue   */
-  --secondary: #22d3ee;
-  /* cyan       */
-  --accent: #a78bfa;
-  /* purple     */
-  --highlight: #f472b6;
-  /* pink       */
-  --bg: #020617;
-  /* slate-950  */
-  --surface: #0f172a;
-  /* slate-900  */
-  --muted: #94a3b8;
-  /* slate-400  */
+======================================== */
+
+:root{
+
+  --primary:#4f9cff;      /* electric blue */
+  --secondary:#7c3aed;    /* neon purple */
+
+  --accent:#a855f7;       /* violet */
+  --highlight:#ec4899;    /* magenta */
+
+  --bg:#030617;
+  --surface:#0f172a;
+
+  --text:#f1f5f9;
+  --muted:#94a3b8;
+
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ========================================
    BASE
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+======================================== */
+
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*::after{
+  box-sizing:border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+  scroll-behavior:smooth;
 }
 
-body {
-  font-family: 'Inter', 'Outfit', sans-serif;
-  background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #020617 100%);
-  background-attachment: fixed;
-  color: #f1f5f9;
-  cursor: none;
-  overflow-x: hidden;
+body{
+
+  font-family:'Inter','Outfit',sans-serif;
+
+  background:#020617;
+
+  color:var(--text);
+
+  overflow-x:hidden;
+
 }
 
-@media (hover: none) {
-  body {
-    cursor: auto;
-  }
+/* subtle grain texture */
+
+body::after{
+
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+
+  opacity:.04;
+
+  pointer-events:none;
+
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   CURSOR STATES
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-.cursor-grow .w-9 {
-  width: 56px !important;
-  height: 56px !important;
-  margin-top: -28px !important;
-  margin-left: -28px !important;
-  border-color: rgba(56, 189, 248, 0.9) !important;
+/* ========================================
+   AURORA BACKGROUND
+======================================== */
+
+.aurora-bg{
+
+  position:fixed;
+  inset:0;
+  z-index:-2;
+
+  overflow:hidden;
+
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   KEYFRAMES
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-@keyframes shine {
-  0% {
-    background-position: -300% center;
-  }
+.aurora-bg::before,
+.aurora-bg::after{
 
-  100% {
-    background-position: 300% center;
-  }
+  content:"";
+  position:absolute;
+
+  width:900px;
+  height:900px;
+
+  border-radius:50%;
+
+  filter:blur(160px);
+
+  opacity:.45;
+
 }
 
-@keyframes float {
+.aurora-bg::before{
 
-  0%,
-  100% {
-    transform: translateY(0);
-  }
+  background:radial-gradient(circle, #38bdf8 0%, transparent 60%);
+  top:-200px;
+  left:-200px;
 
-  50% {
-    transform: translateY(-14px);
-  }
+  animation:auroraMove1 22s ease-in-out infinite;
+
 }
 
-@keyframes floatReverse {
+.aurora-bg::after{
 
-  0%,
-  100% {
-    transform: translateY(0);
-  }
+  background:radial-gradient(circle, #a78bfa 0%, transparent 60%);
+  bottom:-200px;
+  right:-200px;
 
-  50% {
-    transform: translateY(14px);
-  }
+  animation:auroraMove2 26s ease-in-out infinite;
+
 }
 
-@keyframes pulseGlow {
+/* pink aurora */
 
-  0%,
-  100% {
-    opacity: 0.6;
-  }
+.aurora-pink{
 
-  50% {
-    opacity: 1;
-  }
+  position:absolute;
+  width:800px;
+  height:800px;
+
+  border-radius:50%;
+
+  filter:blur(150px);
+
+  opacity:.35;
+
+  background:radial-gradient(circle,#f472b6 0%,transparent 65%);
+
+  top:40%;
+  left:30%;
+
+  animation:auroraMove3 28s ease-in-out infinite;
+
 }
 
-@keyframes blobDrift {
+/* aurora animations */
 
-  0%,
-  100% {
-    transform: scale(1) translate(0, 0);
-  }
+@keyframes auroraMove1{
 
-  33% {
-    transform: scale(1.12) translate(24px, -18px);
-  }
+  0%{transform:translate(0,0);}
+  50%{transform:translate(120px,80px);}
+  100%{transform:translate(0,0);}
 
-  66% {
-    transform: scale(0.95) translate(-16px, 22px);
-  }
 }
 
-@keyframes gradientBorder {
-  0% {
-    background-position: 0% 50%;
-  }
+@keyframes auroraMove2{
 
-  50% {
-    background-position: 100% 50%;
-  }
+  0%{transform:translate(0,0);}
+  50%{transform:translate(-120px,-60px);}
+  100%{transform:translate(0,0);}
 
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
+@keyframes auroraMove3{
 
-  to {
-    transform: rotate(360deg);
-  }
+  0%{transform:translate(0,0);}
+  50%{transform:translate(80px,-120px);}
+  100%{transform:translate(0,0);}
+
 }
 
-@keyframes scrollBar {
-  from {
-    width: 0%;
-  }
+/* ========================================
+   TYPOGRAPHY EFFECT
+======================================== */
 
-  to {
-    width: 100%;
-  }
+.shine-text{
+
+  background:linear-gradient(
+  90deg,
+  var(--primary),
+  var(--secondary),
+  var(--accent),
+  var(--highlight),
+  var(--primary)
+  );
+
+  background-size:300% auto;
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  animation:shine 5s linear infinite;
+
+}
+@keyframes shine{
+
+  0%{background-position:-300% center;}
+  100%{background-position:300% center;}
+
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
+/* ========================================
+   FLOAT ANIMATION
+======================================== */
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes float{
+
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-12px);}
+  100%{transform:translateY(0px);}
+
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   UTILITY CLASSES
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-.shine-text {
-  background: linear-gradient(90deg,
-      var(--primary) 0%,
-      #7dd3fc 25%,
-      #e0f2fe 50%,
-      var(--secondary) 70%,
-      var(--primary) 100%);
-  background-size: 300% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 4s linear infinite;
+.float-el{
+  animation:float 6s ease-in-out infinite;
 }
 
-.float-el {
-  animation: float 5s ease-in-out infinite;
+/* ========================================
+   GLOW PULSE
+======================================== */
+
+@keyframes pulseGlow{
+
+  0%{opacity:.6;}
+  50%{opacity:1;}
+  100%{opacity:.6;}
+
 }
 
-.float-rev {
-  animation: floatReverse 6s ease-in-out infinite;
+.pulse-glow{
+  animation:pulseGlow 3s ease-in-out infinite;
 }
 
-.blob-drift {
-  animation: blobDrift 9s ease-in-out infinite;
-}
+/* ========================================
+   GRID BACKGROUND
+======================================== */
 
-.pulse-glow {
-  animation: pulseGlow 2.5s ease-in-out infinite;
-}
+.grid-overlay{
 
-/* Gradient border card */
-.grad-border {
-  position: relative;
-  border-radius: 16px;
-  padding: 1px;
-  background: linear-gradient(135deg, var(--primary), var(--accent), var(--highlight), var(--secondary));
-  background-size: 300% 300%;
-  animation: gradientBorder 5s ease infinite;
-}
-
-.grad-border-inner {
-  border-radius: 15px;
-  background: var(--surface);
-  height: 100%;
-}
-
-/* Grid overlay */
-.grid-overlay {
   background-image:
-    linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
+  linear-gradient(rgba(56,189,248,.04) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(56,189,248,.04) 1px, transparent 1px);
+
+  background-size:60px 60px;
+
 }
 
-/* Scroll progress bar */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--primary), var(--accent), var(--highlight));
-  z-index: 9999;
-  transform-origin: left;
-  transition: none;
+/* ========================================
+   HERO RADIAL GLOW
+======================================== */
+
+.radial-glow{
+
+  background:radial-gradient(
+  ellipse 60% 50% at 50% 20%,
+  rgba(56,189,248,.12) 0%,
+  transparent 70%
+  );
+
 }
 
-/* Radial glow */
-.radial-glow {
-  background: radial-gradient(ellipse 60% 50% at 50% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+/* ========================================
+   GLASS CARD
+======================================== */
+
+.glass-card{
+
+  background:rgba(15,23,42,.55);
+
+  backdrop-filter:blur(14px);
+
+  border:1px solid rgba(148,163,184,.12);
+
+  border-radius:16px;
+
+  box-shadow:
+  inset 0 1px 0 rgba(255,255,255,.05),
+  0 10px 40px rgba(2,6,23,.6);
+
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   SECTION
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-section {
-  position: relative;
-  overflow: hidden;
+/* ========================================
+   CARD HOVER EFFECT
+======================================== */
+
+.card-hover{
+
+  transition:all .35s cubic-bezier(.22,1,.36,1);
+
+  will-change:transform;
+
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+.card-hover:hover{
+
+  transform:translateY(-6px);
+
+  box-shadow:
+  0 0 0 1px rgba(56,189,248,.2),
+  0 10px 40px rgba(167,139,250,.15),
+  0 0 35px rgba(244,114,182,.12);
+
+}
+
+/* ========================================
+   SECTION DIVIDER
+======================================== */
+
+.section-divider{
+  position:relative;
+}
+
+.section-divider::after{
+
+  content:"";
+
+  position:absolute;
+
+  bottom:-80px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:420px;
+  height:1px;
+
+  background:linear-gradient(
+  90deg,
+  transparent,
+  rgba(56,189,248,.6),
+  transparent
+  );
+
+  opacity:.35;
+
+}
+
+/* ========================================
    SCROLLBAR
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-::-webkit-scrollbar {
-  width: 5px;
+======================================== */
+
+::-webkit-scrollbar{
+  width:6px;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg);
+::-webkit-scrollbar-track{
+  background:var(--bg);
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 4px;
+::-webkit-scrollbar-thumb{
+
+  background:linear-gradient(
+  var(--primary),
+  var(--accent),
+  var(--highlight)
+  );
+
+  border-radius:4px;
+
+}
+.profile-glow{
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+/* ========================================
+   GRADIENT RING (PROFILE BORDER)
+======================================== */
+
+.gradient-ring{
+
+  background:linear-gradient(
+    120deg,
+    #4f9cff,
+    #7c3aed,
+    #ec4899,
+    #4f9cff
+  );
+
+  background-size:300% 300%;
+
+  animation:gradientMove 6s ease infinite;
+
+  border-radius:50%;
+
+}
+
+@keyframes gradientMove{
+
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+
+}
+body {
+  cursor: none;
 }

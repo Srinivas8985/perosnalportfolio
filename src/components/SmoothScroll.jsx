@@ -1,31 +1,42 @@
 import { useEffect } from "react"
 import Lenis from "lenis"
 
-/**
- * SmoothScroll wraps the app with Lenis smooth scrolling.
- * It only initialises the Lenis instance and syncs it with rAF.
- */
 export default function SmoothScroll({ children }) {
-    useEffect(() => {
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            orientation: "vertical",
-            smoothWheel: true,
-        })
 
-        let rafId
-        const raf = (time) => {
-            lenis.raf(time)
-            rafId = requestAnimationFrame(raf)
-        }
-        rafId = requestAnimationFrame(raf)
+  useEffect(() => {
 
-        return () => {
-            cancelAnimationFrame(rafId)
-            lenis.destroy()
-        }
-    }, [])
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+      orientation: "vertical",
+      smoothWheel: true,
+      smoothTouch: true,
+      touchMultiplier: 1.5
+    })
 
-    return <>{children}</>
+    let rafId
+
+    const raf = (time) => {
+      lenis.raf(time)
+      rafId = requestAnimationFrame(raf)
+    }
+
+    rafId = requestAnimationFrame(raf)
+
+    // sync with anchor links (react-scroll)
+    lenis.on("scroll", () => {
+      document.documentElement.classList.toggle(
+        "lenis-scrolling",
+        true
+      )
+    })
+
+    return () => {
+      cancelAnimationFrame(rafId)
+      lenis.destroy()
+    }
+
+  }, [])
+
+  return <>{children}</>
 }
