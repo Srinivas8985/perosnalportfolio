@@ -3,29 +3,28 @@ import { useState, useEffect } from "react"
 import SmoothScroll from "./components/SmoothScroll"
 import CustomCursor from "./components/CustomCursor"
 import Navbar from "./components/Navbar"
+import SectionProgress from "./components/SectionProgress"
 
 import Hero from "./components/Hero"
 import About from "./components/About"
 import Skills from "./components/Skills"
 import Projects from "./components/Projects"
-import Experience from "./components/Experience"
+import Certifications from "./components/Certifications"
+import Achievements from "./components/Achievements"
+import Education from "./components/Education"
 import Contact from "./components/Contact"
-// import Footer from "./components/Footer"
 
 import Reveal from "./components/Reveal"
 import PageLoader from "./components/PageLoader"
-import Background from "./components/Background"
 import CursorSpotlight from "./components/CursorSpotlight"
+import DataFlowBackground from "./components/DataFlowBackground"
 
 function App() {
 
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 1600)
-
+    const timer = setTimeout(() => setLoading(false), 1600)
     return () => clearTimeout(timer)
   }, [])
 
@@ -33,37 +32,39 @@ function App() {
 
   return (
     <SmoothScroll>
-      <Background/>
+
+      {/* Global Data Flow Background */}
+      <DataFlowBackground />
+
+      {/* Mouse spotlight overlay */}
       <CursorSpotlight />
+
+      {/* Custom cursor (dot + lerp ring + click ripple) */}
       <CustomCursor />
 
+      {/* Section progress dots (right side) */}
+      <SectionProgress />
+
+      {/* Floating pill navbar */}
       <Navbar />
 
       <main className="relative overflow-hidden">
 
         <Hero />
 
-        <Reveal>
-          <About />
-        </Reveal>
+        <Reveal><About /></Reveal>
 
-        <Reveal>
-          <Skills />
-        </Reveal>
+        <Reveal><Skills /></Reveal>
 
-        <Reveal>
-          <Projects />
-        </Reveal>
+        <Reveal><Projects /></Reveal>
 
-        <Reveal>
-          <Experience />
-        </Reveal>
+        <Reveal><Certifications /></Reveal>
 
-        <Reveal>
-          <Contact />
-        </Reveal>
+        <Reveal><Achievements /></Reveal>
 
-        {/* <Footer /> */}
+        <Reveal><Education /></Reveal>
+
+        <Reveal><Contact /></Reveal>
 
       </main>
 

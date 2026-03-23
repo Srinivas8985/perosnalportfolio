@@ -1,34 +1,44 @@
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 
-export default function CursorSpotlight(){
-
-  const ref = useRef(null)
+/**
+ * CursorSpotlight — Mouse spotlight effect.
+ * Updates --spotlight-x and --spotlight-y CSS vars on :root,
+ * which are used by sections to render a mouse-reactive radial glow.
+ */
+export default function CursorSpotlight() {
 
   useEffect(() => {
 
-    const move = (e) => {
+    let rafId
 
-      const x = e.clientX
-      const y = e.clientY
-
-      ref.current.style.background =
-        `radial-gradient(
-          600px circle at ${x}px ${y}px,
-          rgba(56,189,248,0.15),
-          transparent 40%
-        )`
+    const onMove = (e) => {
+      cancelAnimationFrame(rafId)
+      rafId = requestAnimationFrame(() => {
+        document.documentElement.style.setProperty("--spotlight-x", `${e.clientX}px`)
+        document.documentElement.style.setProperty("--spotlight-y", `${e.clientY}px`)
+      })
     }
 
-    window.addEventListener("mousemove", move)
+    window.addEventListener("mousemove", onMove, { passive: true })
 
-    return () => window.removeEventListener("mousemove", move)
+    return () => {
+      window.removeEventListener("mousemove", onMove)
+      cancelAnimationFrame(rafId)
+    }
 
   }, [])
 
   return (
     <div
-      ref={ref}
-      className="pointer-events-none fixed inset-0 z-[1]"
+      className="fixed inset-0 pointer-events-none z-[1]"
+      style={{
+        background: `radial-gradient(
+          320px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+          rgba(99,102,241,0.07) 0%,
+          rgba(34,211,238,0.03) 40%,
+          transparent 70%
+        )`
+      }}
     />
   )
 }

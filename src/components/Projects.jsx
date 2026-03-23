@@ -1,199 +1,12 @@
-// import { motion } from "framer-motion"
-// import Tilt from "react-parallax-tilt"
-// import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
-// import Container from "./Container"
-
-// import foodforall from "../assets/projects/foodforall.png"
-// import smartpark from "../assets/projects/smartpark.png"
-// import expense from "../assets/projects/expense.png"
-// import seat from "../assets/projects/seat.png"
-// import chat from "../assets/projects/chat.png"
-
-// const projects = [
-//   {
-//     title: "FoodForAll",
-//     image: foodforall,
-//     description:
-//       "A social impact platform connecting food donors with NGOs and people in need with real-time matching.",
-//     tech: ["React", "Node.js", "MongoDB", "Express"],
-//     github: "https://github.com/Srinivas8985",
-//     demo: "https://food-for-all-xoov.vercel.app/",
-//     accent: "#22d3ee"
-//   },
-//   {
-//     title: "SmartPark",
-//     image: smartpark,
-//     description:
-//       "Smart parking system with real-time slot availability and QR based access.",
-//     tech: ["React", "Node.js", "MongoDB", "Socket.io"],
-//     github: "https://github.com/Srinivas8985",
-//     demo: null,
-//     accent: "#a78bfa"
-//   },
-//   {
-//     title: "Daily Expenditure Tracker",
-//     image: expense,
-//     description:
-//       "Personal finance dashboard for tracking expenses and visualising spending patterns.",
-//     tech: ["JavaScript", "Node.js", "MySQL"],
-//     github: "https://github.com/Srinivas8985",
-//     demo: null,
-//     accent: "#38bdf8"
-//   },
-//   {
-//     title: "Seat Allocation System",
-//     image: seat,
-//     description:
-//       "Automated seat allocation engine for institutions based on constraints and priority rules.",
-//     tech: ["Java", "SpringBoot", "MySQL"],
-//     github: "https://github.com/Srinivas8985",
-//     demo: null,
-//     accent: "#a78bfa"
-//   },
-//   {
-//     title: "Realtime Chat App",
-//     image: chat,
-//     description:
-//       "Full stack MERN chat application with socket rooms and online presence indicators.",
-//     tech: ["React", "Node.js", "MongoDB", "Socket.io"],
-//     github: "https://github.com/Srinivas8985",
-//     demo: null,
-//     accent: "#22d3ee"
-//   }
-// ]
-
-// export default function Projects() {
-
-//   return (
-//     <section id="skills" className="section-divider py-32">
-
-//       {/* glow background */}
-//       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-cyan-400 opacity-[0.05] blur-[200px] rounded-full" />
-
-//       <Container>
-
-//         {/* Header */}
-
-//         <div className="text-center mb-24">
-
-//           <span className="px-4 py-1 rounded-full border border-cyan-400/30 text-cyan-400 text-xs uppercase tracking-widest">
-//             Work
-//           </span>
-
-//           <h2 className="text-4xl md:text-5xl font-bold mt-4">
-//             <span className="shine-text">Featured Projects</span>
-//           </h2>
-
-//           <p className="text-slate-400 mt-4 max-w-xl mx-auto">
-//             Selected projects demonstrating full-stack engineering and product thinking.
-//           </p>
-
-//         </div>
-
-//         {/* Grid */}
-
-//         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
-
-//           {projects.map((p, i) => (
-
-//             <Tilt
-//               key={i}
-//               tiltMaxAngleX={8}
-//               tiltMaxAngleY={8}
-//               scale={1.03}
-//               transitionSpeed={1500}
-//               className="group"
-//             >
-
-//               <motion.div
-//                 whileHover={{ y: -6 }}
-//                 className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/70 backdrop-blur-md"
-//               >
-
-//                 {/* image */}
-
-//                 <div className="relative overflow-hidden">
-
-//                   <img
-//                     src={p.image}
-//                     alt={p.title}
-//                     className="w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-110"
-//                   />
-
-//                   {/* hover overlay */}
-
-//                   <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-6">
-
-//                     <a
-//                       href={p.github}
-//                       target="_blank"
-//                       rel="noreferrer"
-//                       className="text-white text-2xl hover:text-sky-400"
-//                     >
-//                       <FaGithub />
-//                     </a>
-
-//                     {p.demo && (
-//                       <a
-//                         href={p.demo}
-//                         target="_blank"
-//                         rel="noreferrer"
-//                         className="text-white text-2xl hover:text-sky-400"
-//                       >
-//                         <FaExternalLinkAlt />
-//                       </a>
-//                     )}
-
-//                   </div>
-
-//                 </div>
-
-//                 {/* content */}
-
-//                 <div className="p-6">
-
-//                   <h3
-//                     className="text-xl font-bold mb-2"
-//                     style={{ color: p.accent }}
-//                   >
-//                     {p.title}
-//                   </h3>
-
-//                   <p className="text-slate-400 text-sm mb-4">
-//                     {p.description}
-//                   </p>
-
-//                   <div className="flex flex-wrap gap-2">
-
-//                     {p.tech.map((t, j) => (
-//                       <span
-//                         key={j}
-//                         className="text-xs px-3 py-1 rounded-lg bg-slate-950 border border-slate-800"
-//                       >
-//                         {t}
-//                       </span>
-//                     ))}
-
-//                   </div>
-
-//                 </div>
-
-//               </motion.div>
-
-//             </Tilt>
-
-//           ))}
-
-//         </div>
-
-//       </Container>
-
-//     </section>
-//   )
-// }
+import { useRef, useState, useEffect } from "react"
 import { motion } from "framer-motion"
+import Tilt from "react-parallax-tilt"
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
 import Container from "./Container"
+import { techMap } from "../data/techMap"
+
+import foodForAllImg from "../assets/images/foodforall.png"
+import smartParkImg from "../assets/images/smartpark.png"
 
 const projects = [
   {
@@ -208,7 +21,8 @@ const projects = [
     tech: ["React", "Node.js", "MongoDB", "Express"],
     github: "https://github.com/Srinivas8985",
     demo: "https://food-for-all-xoov.vercel.app/",
-    accent: "#22d3ee"
+    accent: "var(--secondary)",
+    image: foodForAllImg
   },
   {
     title: "SmartPark",
@@ -222,67 +36,102 @@ const projects = [
     tech: ["React", "Node.js", "MongoDB", "Socket.io"],
     github: "https://github.com/Srinivas8985",
     demo: null,
-    accent: "#a78bfa"
-  },
-  {
-    title: "Daily Expenditure Tracker",
-    description:
-      "Personal finance dashboard for tracking expenses and visualising spending patterns.",
-    features: [
-      "Expense category tracking",
-      "Monthly reports",
-      "Data visualization"
-    ],
-    tech: ["JavaScript", "Node.js", "MySQL"],
-    github: "https://github.com/Srinivas8985",
-    demo: null,
-    accent: "#38bdf8"
-  },
-  {
-    title: "Seat Allocation System",
-    description:
-      "Automated seat allocation engine for institutions based on constraints and priority rules.",
-    features: [
-      "Rule based seat allocation",
-      "Student preference matching",
-      "Automated scheduling"
-    ],
-    tech: ["Java", "SpringBoot", "MySQL"],
-    github: "https://github.com/Srinivas8985",
-    demo: null,
-    accent: "#f97316"
-  },
-  {
-    title: "Realtime Chat App",
-    description:
-      "Full stack MERN chat application with socket rooms and online presence indicators.",
-    features: [
-      "Realtime messaging",
-      "Online user presence",
-      "Socket based chat rooms"
-    ],
-    tech: ["React", "Node.js", "MongoDB", "Socket.io"],
-    github: "https://github.com/Srinivas8985",
-    demo: null,
-    accent: "#22d3ee"
+    accent: "var(--highlight)",
+    image: smartParkImg
   }
 ]
 
+/* Spotlight hook — mouse-reactive radial glow inside card */
+function SpotlightCard({ children, accent, highlight }) {
+  const cardRef = useRef(null)
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect()
+    const x = ((e.clientX - rect.left) / rect.width) * 100
+    const y = ((e.clientY - rect.top) / rect.height) * 100
+    cardRef.current.style.setProperty("--x", `${x}%`)
+    cardRef.current.style.setProperty("--y", `${y}%`)
+  }
+
+  const handleMouseLeave = () => {
+    if (!cardRef.current) return;
+    cardRef.current.style.setProperty("--x", "50%")
+    cardRef.current.style.setProperty("--y", "50%")
+  }
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={`relative rounded-2xl overflow-hidden h-full transition-all duration-300 ${highlight ? 'scale-[1.03] ring-2 ring-cyan-400 brightness-110' : ''}`}
+      style={{
+        "--x": "50%",
+        "--y": "50%",
+        "--accent": accent,
+        background: "rgba(15,23,42,0.65)",
+        border: highlight ? "none" : "1px solid rgba(99,102,241,0.15)",
+        boxShadow: highlight ? "0 0 35px rgba(34,211,238,0.6)" : "none",
+        backdropFilter: "blur(16px)"
+      }}
+    >
+      {/* Spotlight radial */}
+      <div
+        className="absolute inset-0 pointer-events-none transition-opacity duration-300 rounded-2xl opacity-0 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(180px circle at var(--x) var(--y), ${accent === "var(--primary)" ? "rgba(99,102,241,0.12)" : accent === "var(--secondary)" ? "rgba(34,211,238,0.12)" : accent === "var(--accent)" ? "rgba(236,72,153,0.12)" : "rgba(167,139,250,0.12)"} 0%, transparent 70%)`
+        }}
+      />
+
+      {children}
+    </div>
+  )
+}
+
 export default function Projects() {
+  const [activeTech, setActiveTech] = useState(null)
+
+  useEffect(() => {
+    const handleSet = (e) => setActiveTech(e.detail)
+    const handleClear = () => setActiveTech(null)
+    window.addEventListener('tech-hover', handleSet)
+    window.addEventListener('tech-hover-leave', handleClear)
+    return () => {
+      window.removeEventListener('tech-hover', handleSet)
+      window.removeEventListener('tech-hover-leave', handleClear)
+    }
+  }, [])
+
   return (
     <section id="projects" className="relative py-32 section-divider">
 
-      {/* Glow background */}
-
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-cyan-400 opacity-[0.05] blur-[200px] rounded-full" />
+      {/* ambient glow */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(99,102,241,0.07) 0%, transparent 70%)",
+          filter: "blur(60px)"
+        }}
+      />
 
       <Container>
 
         {/* Header */}
-
-        <div className="text-center mb-24">
-
-          <span className="px-4 py-1 rounded-full border border-cyan-400/30 text-cyan-400 text-xs uppercase tracking-widest">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-20"
+        >
+          <span
+            className="px-4 py-1 rounded-full text-xs uppercase tracking-widest font-semibold"
+            style={{
+              border: "1px solid rgba(34,211,238,0.3)",
+              color: "var(--secondary)"
+            }}
+          >
             Work
           </span>
 
@@ -290,124 +139,107 @@ export default function Projects() {
             <span className="shine-text">Featured Projects</span>
           </h2>
 
-          <p className="text-slate-400 mt-4 max-w-xl mx-auto">
+          <p className="mt-4 max-w-xl mx-auto" style={{ color: "var(--muted)" }}>
             Selected projects demonstrating product thinking and full-stack engineering.
           </p>
-
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12">
+          {projects.map((project, i) => {
+            const isHighlighted = activeTech && techMap[activeTech]?.projects.includes(project.title);
 
-        <div className="grid md:grid-cols-2 gap-10">
-
-          {projects.map((project, i) => (
-
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="group relative rounded-2xl border border-slate-800
-              bg-slate-900/60 backdrop-blur-xl
-              p-8 transition hover:border-cyan-400/40"
-            >
-
-              {/* Accent line */}
-
-              <div
-                className="absolute top-0 left-0 w-full h-1 rounded-t-2xl"
-                style={{ background: project.accent }}
-              />
-
-              {/* Title */}
-
-              <h3
-                className="text-2xl font-semibold mb-3"
-                style={{ color: project.accent }}
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [.22,1,.36,1] }}
+                viewport={{ once: true }}
+                className="group w-full max-w-lg mx-auto"
               >
-                {project.title}
-              </h3>
-
-              {/* Description */}
-
-              <p className="text-slate-400 text-sm mb-6">
-                {project.description}
-              </p>
-
-              {/* Features */}
-
-              <ul className="space-y-2 mb-6">
-
-                {project.features.map((feature, idx) => (
-
-                  <li
-                    key={idx}
-                    className="text-sm text-slate-300 flex items-start gap-2"
-                  >
-                    <span className="text-cyan-400">•</span>
-                    {feature}
-                  </li>
-
-                ))}
-
-              </ul>
-
-              {/* Tech stack */}
-
-              <div className="flex flex-wrap gap-2 mb-6">
-
-                {project.tech.map((tech, idx) => (
-
-                  <span
-                    key={idx}
-                    className="text-xs px-3 py-1 rounded-lg
-                    bg-slate-950 border border-slate-800
-                    text-slate-300"
-                  >
-                    {tech}
-                  </span>
-
-                ))}
-
-              </div>
-
-              {/* Links */}
-
-              <div className="flex gap-6 text-lg">
-
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition"
+                <Tilt
+                  tiltMaxAngleX={4}
+                  tiltMaxAngleY={4}
+                  scale={1.01}
+                  transitionSpeed={2500}
+                  className="h-full"
                 >
-                  <FaGithub />
-                  Code
-                </a>
+                  <SpotlightCard accent={project.accent} highlight={isHighlighted}>
+                    
+                    {/* Project Image with Interactive Overlay */}
+                    <div className="relative w-full h-52 sm:h-64 overflow-hidden rounded-t-2xl flex-shrink-0 bg-slate-800">
+                      <motion.img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10">
+                        <a 
+                          href={project.github} 
+                          target="_blank" 
+                          rel="noreferrer"
+                          className="px-5 py-2.5 border-[1px] border-white/40 rounded-xl hover:bg-white hover:text-slate-950 transition-colors font-bold text-sm tracking-wide text-white flex items-center gap-2"
+                        >
+                          <FaGithub /> View Code
+                        </a>
+                        {project.demo && (
+                          <a 
+                            href={project.demo} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="px-5 py-2.5 bg-white text-slate-950 rounded-xl hover:bg-slate-200 transition-colors font-bold text-sm tracking-wide flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+                          >
+                            <FaExternalLinkAlt /> Live Demo
+                          </a>
+                        )}
+                      </div>
+                    </div>
 
-                {project.demo && (
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition"
-                  >
-                    <FaExternalLinkAlt />
-                    Live
-                  </a>
-                )}
+                    <div className="p-7 flex flex-col h-[calc(100%-13rem)] sm:h-[calc(100%-16rem)]">
+                      {/* Title */}
+                      <h3
+                        className="text-2xl font-bold mb-3"
+                        style={{ color: project.accent }}
+                      >
+                        {project.title}
+                      </h3>
 
-              </div>
+                      {/* Description */}
+                      <p className="text-[15px] leading-relaxed mb-6" style={{ color: "var(--muted)" }}>
+                        {project.description}
+                      </p>
 
-            </motion.div>
+                      {/* Tech stack */}
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        {project.tech.map((tech, idx) => {
+                          const techMatch = activeTech && tech.toLowerCase() === activeTech;
+                          return (
+                            <span
+                              key={idx}
+                              className={`text-[12px] px-3 py-1.5 rounded-lg font-semibold transition-colors duration-300`}
+                              style={{
+                                background: techMatch ? project.accent + "40" : "rgba(5,8,22,0.8)",
+                                border: techMatch ? `1px solid ${project.accent}` : "1px solid rgba(99,102,241,0.2)",
+                                color: techMatch ? "#fff" : "var(--highlight)"
+                              }}
+                            >
+                              {tech}
+                            </span>
+                          )
+                        })}
+                      </div>
 
-          ))}
-
+                    </div>
+                  </SpotlightCard>
+                </Tilt>
+              </motion.div>
+            )
+          })}
         </div>
-
       </Container>
-
     </section>
   )
 }

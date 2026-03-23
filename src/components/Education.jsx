@@ -2,38 +2,34 @@ import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import Container from "./Container"
 
-const experiences = [
+const educationData = [
   {
-    year: "2025",
-    title: "Full Stack Developer",
-    company: "Personal Projects",
-    description:
-      "Built full-stack applications using React, Node.js, MongoDB and Express with scalable architecture and real-time features.",
+    year: "August 2023 - Present",
+    title: "B.Tech Computer Science and Engineering",
+    company: "Lovely Professional University",
+    description: "CGPA: 8.14",
     accent: "var(--primary)",
     accentRaw: "#6366f1"
   },
   {
-    year: "2024",
-    title: "Java Developer",
-    company: "Academic Projects",
-    description:
-      "Developed backend systems using Java and SpringBoot including automated seat allocation systems and REST APIs.",
+    year: "2021 - 2023",
+    title: "Intermediate",
+    company: "Palanadu Junior College",
+    description: "64.3%",
     accent: "var(--secondary)",
     accentRaw: "#22d3ee"
   },
   {
-    year: "2023",
-    title: "Started Web Development",
-    company: "Learning Journey",
-    description:
-      "Learned HTML, CSS, JavaScript and began building responsive web applications.",
+    year: "2016 - 2021",
+    title: "Schooling",
+    company: "Government High School VP South",
+    description: "98.8%",
     accent: "var(--highlight)",
     accentRaw: "#a78bfa"
   }
 ]
 
-function TimelineCard({ exp, i }) {
-
+function TimelineCard({ edu, i }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: "-60px" })
   const isLeft = i % 2 === 0
@@ -43,33 +39,33 @@ function TimelineCard({ exp, i }) {
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: i * 0.15, ease: [.22,1,.36,1] }}
+      transition={{ duration: 0.6, delay: i * 0.2, ease: [.22,1,.36,1] }}
       className={`relative flex items-center mb-16 ${isLeft ? "flex-row" : "flex-row-reverse"}`}
     >
 
       {/* Glowing dot node */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+      <div className="absolute left-[24px] md:left-1/2 transform -translate-x-1/2 z-10">
         <div className="relative flex items-center justify-center">
           <div
             className="absolute w-7 h-7 rounded-full blur-md opacity-60 animate-pulse"
-            style={{ background: exp.accentRaw }}
+            style={{ background: edu.accentRaw }}
           />
           <div
             className="w-4 h-4 rounded-full border-2"
             style={{
-              background: exp.accentRaw,
+              background: edu.accentRaw,
               borderColor: "var(--bg)",
-              boxShadow: `0 0 12px ${exp.accentRaw}`
+              boxShadow: `0 0 12px ${edu.accentRaw}`
             }}
           />
         </div>
       </div>
 
       {/* Card — left or right */}
-      <div className={`w-[calc(50%-2rem)] ${isLeft ? "pr-8" : "pl-8"}`}>
+      <div className={`w-full md:w-[calc(50%-2rem)] pl-[70px] md:pl-0 ${isLeft ? "md:pr-8 md:text-right" : "md:pl-8 text-left"}`}>
         <motion.div
           whileHover={{ y: -5 }}
-          className="relative group rounded-2xl p-6 cursor-default"
+          className="relative group rounded-2xl p-6 cursor-default inline-block w-full md:w-auto"
           style={{
             background: "rgba(15,23,42,0.7)",
             border: "1px solid rgba(255,255,255,0.07)",
@@ -77,8 +73,8 @@ function TimelineCard({ exp, i }) {
             transition: `all var(--anim-mid) var(--ease-smooth)`
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.borderColor = exp.accentRaw + "55"
-            e.currentTarget.style.boxShadow = `0 0 30px ${exp.accentRaw}33, 0 8px 30px rgba(0,0,0,0.3)`
+            e.currentTarget.style.borderColor = edu.accentRaw + "55"
+            e.currentTarget.style.boxShadow = `0 0 30px ${edu.accentRaw}33, 0 8px 30px rgba(0,0,0,0.3)`
           }}
           onMouseLeave={e => {
             e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)"
@@ -89,31 +85,31 @@ function TimelineCard({ exp, i }) {
           {/* accent top line */}
           <div
             className="absolute top-0 left-6 right-6 h-[1px] rounded-full"
-            style={{ background: `linear-gradient(90deg, transparent, ${exp.accentRaw}88, transparent)` }}
+            style={{ background: `linear-gradient(90deg, transparent, ${edu.accentRaw}88, transparent)` }}
           />
 
           {/* year chip */}
           <div
             className="inline-block mb-3 px-3 py-1 text-xs font-semibold rounded-full"
             style={{
-              border: `1px solid ${exp.accentRaw}55`,
-              color: exp.accent,
-              background: `${exp.accentRaw}12`
+              border: `1px solid ${edu.accentRaw}55`,
+              color: edu.accent,
+              background: `${edu.accentRaw}12`
             }}
           >
-            {exp.year}
+            {edu.year}
           </div>
 
           <h3 className="text-lg font-bold mb-1" style={{ color: "var(--text)" }}>
-            {exp.title}
+            {edu.title}
           </h3>
 
-          <p className="text-sm mb-3 font-medium" style={{ color: exp.accent }}>
-            {exp.company}
+          <p className="text-sm mb-3 font-medium" style={{ color: edu.accent }}>
+            {edu.company}
           </p>
 
-          <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-            {exp.description}
+          <p className="text-lg font-bold tracking-wider" style={{ color: "var(--muted)" }}>
+            {edu.description}
           </p>
 
         </motion.div>
@@ -123,19 +119,18 @@ function TimelineCard({ exp, i }) {
   )
 }
 
-export default function Experience() {
-
+export default function Education() {
   const beamRef = useRef(null)
   const beamInView = useInView(beamRef, { once: true })
 
   return (
-    <section id="experience" className="section-divider py-32">
+    <section id="education" className="section-divider py-24">
 
       {/* ambient glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(167,139,250,0.06) 0%, transparent 70%)",
           filter: "blur(80px)"
         }}
       />
@@ -153,19 +148,19 @@ export default function Experience() {
           <span
             className="px-4 py-1 rounded-full text-xs uppercase tracking-widest font-semibold"
             style={{
-              border: "1px solid rgba(99,102,241,0.3)",
-              color: "var(--primary)"
+              border: "1px solid rgba(167,139,250,0.3)",
+              color: "var(--highlight)"
             }}
           >
-            Journey
+            Academia
           </span>
 
           <h2 className="text-4xl md:text-5xl font-bold mt-4">
-            <span className="shine-text">Experience</span>
+            <span className="shine-text">Education</span>
           </h2>
 
           <p className="mt-4 max-w-xl mx-auto" style={{ color: "var(--muted)" }}>
-            My journey in software development and full-stack engineering.
+            My academic journey and foundational learning experiences.
           </p>
         </motion.div>
 
@@ -174,7 +169,7 @@ export default function Experience() {
 
           {/* Animated vertical beam */}
           <motion.div
-            className="absolute left-1/2 top-0 -translate-x-1/2 w-[2px] rounded-full origin-top"
+            className="absolute left-[24px] md:left-1/2 top-0 -translate-x-1/2 w-[2px] rounded-full origin-top z-0"
             style={{
               height: "100%",
               background: "linear-gradient(to bottom, var(--primary), var(--secondary), var(--highlight), transparent)",
@@ -184,8 +179,8 @@ export default function Experience() {
             transition={{ duration: 1.4, ease: [.22,1,.36,1] }}
           />
 
-          {experiences.map((exp, i) => (
-            <TimelineCard key={i} exp={exp} i={i} />
+          {educationData.map((edu, i) => (
+            <TimelineCard key={i} edu={edu} i={i} />
           ))}
 
         </div>

@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 
 export default function MagneticButton({
   children,
+  hoverText,
   href,
   onClick,
   className = ""
@@ -58,8 +59,13 @@ export default function MagneticButton({
       bg-gradient-to-r from-sky-400/20 via-cyan-400/20 to-sky-400/20
       blur-xl transition duration-500"/>
 
-      <span className="relative z-10">
-        {children}
+      <span className="relative z-10 block overflow-hidden h-5 leading-5 items-center justify-center">
+        <div className={`flex flex-col transition-transform duration-300 ${hoverText ? 'group-hover:-translate-y-5' : ''}`}>
+          <span className="h-5 flex items-center justify-center">{children}</span>
+          {hoverText && (
+            <span className="h-5 flex items-center justify-center text-cyan-200">{hoverText}</span>
+          )}
+        </div>
       </span>
 
     </motion.div>
