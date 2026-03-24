@@ -24,7 +24,7 @@ const SOCIALS = [
   {
     icon: <FaEnvelope />,
     label: "Email",
-    href: "mailto:adepulakshmisrinivas@gmail.com",
+    href: "mailto:srinivas949k@gmail.com",
     accent: "var(--accent)",
     accentRaw: "#ec4899",
     glow: "rgba(236,72,153,0.6)"

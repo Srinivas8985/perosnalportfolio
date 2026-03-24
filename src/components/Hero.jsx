@@ -46,9 +46,9 @@ export default function Hero() {
     const typed = new Typed(typedRef.current, {
       strings: [
         "Full-Stack Developer",
-        "Backend Engineer",
-        "System Builder",
-        "Problem Solver"
+        "React Developer",
+        "Node.js Developer",
+        "Building Real-World Applications"
       ],
       typeSpeed:  45,
       backSpeed:  25,

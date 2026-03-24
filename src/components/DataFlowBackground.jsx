@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const HORIZONTAL_LINES = 8;
-const VERTICAL_LINES = 10;
+const VERTICAL_LINES = 8;
 
 export default function DataFlowBackground() {
   const [lineSpacing, setLineSpacing] = useState(120);
@@ -75,7 +75,7 @@ export default function DataFlowBackground() {
           >
             {/* Packet */}
             <motion.div
-              className="absolute top-1/2 -translate-y-1/2 w-[6px] h-[6px] rounded-full bg-[#22d3ee] shadow-[0_0_10px_#22d3ee]"
+              className="absolute top-1/2 -translate-y-1/2 w-[6px] h-[6px] rounded-full bg-[#22d3ee] shadow-[0_0_8px_rgba(34,211,238,0.8)]"
               animate={{ left: ["-10%", "110%"] }}
               transition={{
                 duration: 8 + Math.random() * 4,
