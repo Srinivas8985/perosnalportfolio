@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa"
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa"
 import MagneticButton from "./MagneticButton"
 import Container from "./Container"
 
@@ -119,6 +119,38 @@ export default function Contact() {
             I'm open to collaborating on innovative projects, discussing ideas,
             or exploring new opportunities. Feel free to reach out.
           </p>
+
+          {/* Contact Info */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6">
+            <a
+              href="tel:6303603854"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-medium transition-all"
+              style={{
+                background: "rgba(99,102,241,0.08)",
+                border: "1px solid rgba(99,102,241,0.25)",
+                color: "var(--muted)"
+              }}
+              onMouseEnter={e => { e.currentTarget.style.color = "#6366f1"; e.currentTarget.style.borderColor = "rgba(99,102,241,0.6)"; }}
+              onMouseLeave={e => { e.currentTarget.style.color = "var(--muted)"; e.currentTarget.style.borderColor = "rgba(99,102,241,0.25)"; }}
+            >
+              <FaPhone style={{ color: "#6366f1" }} />
+              +91 6303603854
+            </a>
+            <a
+              href="mailto:srinivas949k@gmail.com"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-medium transition-all"
+              style={{
+                background: "rgba(236,72,153,0.08)",
+                border: "1px solid rgba(236,72,153,0.25)",
+                color: "var(--muted)"
+              }}
+              onMouseEnter={e => { e.currentTarget.style.color = "#ec4899"; e.currentTarget.style.borderColor = "rgba(236,72,153,0.6)"; }}
+              onMouseLeave={e => { e.currentTarget.style.color = "var(--muted)"; e.currentTarget.style.borderColor = "rgba(236,72,153,0.25)"; }}
+            >
+              <FaEnvelope style={{ color: "#ec4899" }} />
+              srinivas949k@gmail.com
+            </a>
+          </div>
 
           {/* CTA / Form Area */}
           <div className="mt-10 flex w-full justify-center min-h-[50px] transition-all duration-300">
