@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 import Typed from "typed.js"
 import { motion } from "framer-motion"
+import { isLowPowerDevice } from "../utils/deviceDetect"
 
 import {
   FaGithub, FaLinkedin,
@@ -39,6 +40,7 @@ const fadeUp = (delay = 0) => ({
 /* -------------------------------------------------- */
 
 export default function Hero() {
+  const lowPower = isLowPowerDevice()
 
   const typedRef = useRef(null)
 
@@ -253,8 +255,8 @@ export default function Hero() {
                   key={i}
                   className={`absolute z-20 flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-md bg-white/5 border border-white/10 ${Node.cls}`}
                   style={{ boxShadow: `0 0 15px ${Node.color}40`, color: Node.color }}
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+                  animate={lowPower ? {} : { y: [0, -10, 0] }}
+                  transition={lowPower ? {} : { duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
                 >
                   <Node.Icon size={22} />
                 </motion.div>
@@ -265,8 +267,8 @@ export default function Hero() {
                 className="relative w-full h-full"
                 initial="rest"
                 whileHover="hover"
-                animate={{ y: [0, -8, 0] }}
-                transition={{ y: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}
+                animate={lowPower ? {} : { y: [0, -8, 0] }}
+                transition={lowPower ? {} : { y: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}
               >
                 <ProfileGlow>
                   <div
@@ -293,6 +295,7 @@ export default function Hero() {
                         transition={{ duration: 1.2, ease: "easeOut", delay: 0.35 }}
                         src={profileImg}
                         alt="Lakshmi Srinivas Adepu"
+                        loading="lazy"
                         className="w-full h-full object-cover"
                       />
 
@@ -327,8 +330,8 @@ export default function Hero() {
           Scroll
         </span>
         <motion.div
-          animate={{ y: [0, 12, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
+          animate={lowPower ? {} : { y: [0, 12, 0] }}
+          transition={lowPower ? {} : { duration: 1.5, repeat: Infinity }}
           className="w-[2px] h-10 rounded-full"
           style={{
             background: "linear-gradient(to bottom, var(--primary), transparent)"

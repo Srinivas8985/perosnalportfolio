@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { techMap } from "../data/techMap"
+import { isLowPowerDevice } from "../utils/deviceDetect"
 
 import {
   FaReact, FaNodeJs, FaJava, FaPython, FaDocker, FaGitAlt
@@ -102,6 +103,7 @@ const LEGEND = [
    COMPONENT
 ───────────────────────────────── */
 export default function SkillGraph() {
+  const lowPower = isLowPowerDevice()
   const [active, setActive] = useState(null)
 
   const tooltipRef = useRef(null)
@@ -278,7 +280,7 @@ export default function SkillGraph() {
                     cx={node.x} cy={node.y}
                     initial={{ r: 0, opacity: 0 }}
                     animate={{ r: isAct ? 26 : 20, opacity: isAct ? 0.35 : 0.2 }}
-                    transition={{ duration: 0.25 }}
+                    transition={lowPower ? { duration: 0 } : { duration: 0.25 }}
                     fill={col}
                     filter={`url(#glow-${node.group})`}
                   />
@@ -294,7 +296,7 @@ export default function SkillGraph() {
                     stroke: isAct ? col : col + "bb",
                     strokeWidth: 2
                   }}
-                  transition={{ duration: 0.3 }}
+                  transition={lowPower ? { duration: 0 } : { duration: 0.3 }}
                   filter={hl ? `url(#glow-${node.group})` : undefined}
                   style={{ cursor: "pointer" }}
                 />
@@ -324,7 +326,7 @@ export default function SkillGraph() {
                   animate={{
                     opacity: (active && !hl) ? 0.15 : 1
                   }}
-                  transition={{ duration: 0.3 }}
+                  transition={lowPower ? { duration: 0 } : { duration: 0.3 }}
                   className="font-medium drop-shadow-md"
                   fill="#7dd3fc"
                   style={{

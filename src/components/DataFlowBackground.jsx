@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { isLowPowerDevice } from "../utils/deviceDetect";
 
-const HORIZONTAL_LINES = 8;
-const VERTICAL_LINES = 8;
+const LOW_POWER = isLowPowerDevice();
+const HORIZONTAL_LINES = LOW_POWER ? 4 : 8;
+const VERTICAL_LINES   = LOW_POWER ? 4 : 8;
 
 export default function DataFlowBackground() {
   const [lineSpacing, setLineSpacing] = useState(120);
@@ -20,7 +22,7 @@ export default function DataFlowBackground() {
     window.addEventListener("resize", handleResize);
 
     const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+      if (!LOW_POWER) setMousePos({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener("mousemove", handleMouseMove);
 

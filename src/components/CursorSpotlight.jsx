@@ -1,11 +1,15 @@
 import { useEffect } from "react"
+import { isLowPowerDevice } from "../utils/deviceDetect"
 
 /**
  * CursorSpotlight — Mouse spotlight effect.
  * Updates --spotlight-x and --spotlight-y CSS vars on :root,
  * which are used by sections to render a mouse-reactive radial glow.
+ * Disabled on Smart TV / low-power devices.
  */
 export default function CursorSpotlight() {
+  if (isLowPowerDevice()) return null
+
 
   useEffect(() => {
 

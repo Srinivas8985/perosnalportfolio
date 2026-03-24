@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react"
+import { isLowPowerDevice } from "../utils/deviceDetect"
 
 export default function CustomCursor() {
+  if (isLowPowerDevice()) return null
+
 
   const dotRef  = useRef(null)
   const ringRef = useRef(null)
