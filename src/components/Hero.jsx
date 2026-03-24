@@ -100,14 +100,27 @@ export default function Hero() {
               Open to opportunities
             </motion.div>
 
-            {/* Gradient heading */}
-            <motion.h1
-              {...fadeUp(0.15)}
-              className="text-5xl md:text-6xl font-extrabold tracking-tight"
-              style={{ fontFamily: "Outfit, sans-serif", minHeight: "6rem" }}
+            {/* Name */}
+            <motion.div {...fadeUp(0.1)}>
+              <p className="text-base md:text-lg font-medium mb-1" style={{ color: "var(--muted)" }}>
+                Hi, I'm
+              </p>
+              <h1
+                className="text-4xl md:text-5xl font-extrabold tracking-tight shine-text"
+                style={{ fontFamily: "Outfit, sans-serif" }}
+              >
+                Lakshmi Srinivas Adepu
+              </h1>
+            </motion.div>
+
+            {/* Typed Role */}
+            <motion.h2
+              {...fadeUp(0.2)}
+              className="text-3xl md:text-4xl font-bold tracking-tight"
+              style={{ fontFamily: "Outfit, sans-serif", minHeight: "3rem" }}
             >
               <span ref={typedRef} className="shine-text" />
-            </motion.h1>
+            </motion.h2>
 
             {/* Tagline */}
             <motion.p
