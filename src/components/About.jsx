@@ -77,7 +77,7 @@ export default function About() {
           </h2>
 
           <p className="mt-4 max-w-xl mx-auto" style={{ color: "var(--muted)" }}>
-            A passionate full-stack developer building modern, scalable web
+            A passionate Full-stack developer building modern, scalable web
             applications and solving real-world problems with clean and efficient code.
           </p>
         </motion.div>
